@@ -19,7 +19,7 @@ public class Tenants {
     @Column
     private String name;
     @Column
-    private Integer editionId;
+    private Long editionId;
     @Column
     private Boolean isActive;
     @Column

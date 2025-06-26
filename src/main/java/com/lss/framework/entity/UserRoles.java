@@ -15,11 +15,11 @@ public class UserRoles {
     @Column
     private Long id;
     @Column
-    private Integer tenantId;
+    private Long tenantId;
     @Column
-    private Integer userId;
+    private Long userId;
     @Column
-    private Integer roleId;
+    private Long roleId;
     @Column
     private Long creatorUserId;
     @Column

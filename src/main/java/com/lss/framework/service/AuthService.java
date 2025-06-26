@@ -136,6 +136,22 @@ public class AuthService {
             throw new RuntimeException("Invalid token", e);
         }
     }
+
+    public Long extractTenantId(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            if (claims.containsKey("tenantId")) {
+                return Long.valueOf(claims.get("tenantId").toString());
+            }
+            return null;
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid token", e);
+        }
+    }
 }
 
 

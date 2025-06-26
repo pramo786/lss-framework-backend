@@ -1,6 +1,5 @@
 package com.lss.framework.controller;
 
-import com.lss.framework.repository.LoginAuditRepository;
 import com.lss.framework.service.AuthService;
 import com.lss.framework.service.LoginAttemptsService;
 import lombok.RequiredArgsConstructor;

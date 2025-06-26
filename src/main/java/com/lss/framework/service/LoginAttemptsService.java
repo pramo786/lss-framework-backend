@@ -4,15 +4,11 @@ import com.lss.framework.dto.response.GetUserLastLoginTimeResponseDTO;
 import com.lss.framework.entity.LoginAudit;
 import com.lss.framework.repository.LoginAuditRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +16,7 @@ public class LoginAttemptsService {
     private final LoginAuditRepository loginAuditRepository;
 
     public GetUserLastLoginTimeResponseDTO getLastLogin(Long userId) {
-        return loginAuditRepository.findLastLoginByUserId(userId)
+        return loginAuditRepository.findFirstByUserIdOrderByLoginDateDescLoginTimeDesc(userId)
                 .map(GetUserLastLoginTimeResponseDTO::convertLoginAudit)
                 .orElseThrow(() -> new NoSuchElementException("No login record found for userId: " + userId));
     }
@@ -28,7 +24,7 @@ public class LoginAttemptsService {
     public void setLastLogin(Long userId) {
         LoginAudit loginAudit =LoginAudit.builder()
                 .userId(userId)
-                .loginTime(LocalDateTime.now().toString())
+                .loginTime(LocalTime.now().toString().substring(0,5))
                 .loginDate(LocalDateTime.now())
                 .build();
         loginAuditRepository.save(loginAudit);

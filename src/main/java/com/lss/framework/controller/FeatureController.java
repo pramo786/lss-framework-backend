@@ -1,12 +1,18 @@
 package com.lss.framework.controller;
 
+import com.lss.framework.dto.request.ModuleRequest;
+import com.lss.framework.dto.response.FeatureDto;
 import com.lss.framework.dto.response.MenuItem;
+import com.lss.framework.dto.response.ModuleFeatureResponse;
+import com.lss.framework.service.AuthService;
+import com.lss.framework.service.FeatureService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +20,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/Api/Feature")
 @RequiredArgsConstructor
-class FeatureController {
+@Slf4j
+public class FeatureController {
+
+
+    private final AuthService authService;
+    private final FeatureService featureService;
+
 
     @PostMapping("/GetUserMenu")
     public ResponseEntity<Map<String, List<MenuItem>>> getUserMenu() {
@@ -83,5 +95,11 @@ class FeatureController {
         Map<String, List<MenuItem>> response = new HashMap<>();
         response.put("menuItems", menuItems);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/GetRolesFeatures")
+    public ResponseEntity<ModuleFeatureResponse> getRolesFeatures(@RequestBody @Valid ModuleRequest request,
+                                                             @RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+        return ResponseEntity.ok(new ModuleFeatureResponse(featureService.getFeaturesByModule(request.getModule(), token)));
     }
 }

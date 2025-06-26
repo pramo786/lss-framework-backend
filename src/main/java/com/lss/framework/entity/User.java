@@ -15,93 +15,93 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "Id")
     private Long id;
 
-    @Column(name = "tenant_id")
+    @Column(name = "TenantId")
     private Integer tenantId;
 
-    @Column(name = "name")
+    @Column(name = "Name")
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "Surname")
     private String surname;
 
-    @Column(name = "user_name")
+    @Column(name = "UserName")
     private String userName;
 
-    @Column(name = "email_address")
+    @Column(name = "EmailAddress")
     private String emailAddress;
 
-    @Column(name = "is_email_confirmed")
+    @Column(name = "IsEmailConfirmed")
     private Boolean isEmailConfirmed;
 
-    @Column(name = "phone_number")
+    @Column(name = "PhoneNumber")
     private String phoneNumber;
 
-    @Column(name = "is_phone_number_confirmed")
+    @Column(name = "IsPhoneNumberConfirmed")
     private Boolean isPhoneNumberConfirmed;
 
-    @Column(name = "password")
+    @Column(name = "Password")
     private String password;
 
-    @Column(name = "validation_key")
+    @Column(name = "ValidationKey")
     private String validationKey;
 
-    @Column(name = "should_change_password_on_next_login")
+    @Column(name = "ShouldChangePasswordOnNextLogin")
     private Boolean shouldChangePasswordOnNextLogin;
 
-    @Column(name = "is_active")
+    @Column(name = "IsActive")
     private Boolean isActive;
 
-    @Column(name = "sign_in_token_expire_time_utc")
+    @Column(name = "SignInTokenExpireTimeUtc")
     private LocalDateTime signInTokenExpireTimeUtc;
 
-    @Column(name = "sign_in_token")
+    @Column(name = "SignInToken", columnDefinition = "TEXT")
     private String signInToken;
 
-    @Column(name = "authentication_source")
+    @Column(name = "AuthenticationSource")
     private String authenticationSource;
 
-    @Column(name = "is_lockout_enabled")
+    @Column(name = "IsLockoutEnabled")
     private Boolean isLockoutEnabled;
 
-    @Column(name = "lockout_end_date_utc")
+    @Column(name = "LockoutEndDateUtc")
     private LocalDateTime lockoutEndDateUtc;
 
-    @Column(name = "access_failed_count")
+    @Column(name = "AccessFailedCount")
     private Integer accessFailedCount;
 
-    @Column(name = "security_stamp")
+    @Column(name = "SecurityStamp")
     private String securityStamp;
 
-    @Column(name = "concurrency_stamp")
+    @Column(name = "ConcurrencyStamp")
     private String concurrencyStamp;
 
-    @Column(name = "last_access_failed_date_time")
+    @Column(name = "LastAccessFailedDateTime")
     private LocalDateTime lastAccessFailedDateTime;
 
-    @Column(name = "next_reset_password_date")
+    @Column(name = "NextResetPasswordDate")
     private LocalDateTime nextResetPasswordDate;
 
-    @Column(name = "creation_time")
+    @Column(name = "CreationTime")
     private LocalDateTime creationTime;
 
-    @Column(name = "creator_user_id")
+    @Column(name = "CreatorUserId")
     private Integer creatorUserId;
 
-    @Column(name = "last_modification_time")
+    @Column(name = "LastModificationTime")
     private LocalDateTime lastModificationTime;
 
-    @Column(name = "last_modifier_user_id")
+    @Column(name = "LastModifierUserId")
     private Integer lastModifierUserId;
 
-    @Column(name = "is_deleted")
+    @Column(name = "IsDeleted")
     private Boolean isDeleted;
 
-    @Column(name = "deleter_user_id")
+    @Column(name = "DeleterUserId")
     private Integer deleterUserId;
 
-    @Column(name = "deletion_time")
+    @Column(name = "DeletionTime")
     private LocalDateTime deletionTime;
 }

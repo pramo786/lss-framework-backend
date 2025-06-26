@@ -15,7 +15,7 @@ public class Roles {
     @Column
     private Long id;
     @Column
-    private Integer tenantId;
+    private Long tenantId;
     @Column
     private String name;
     @Column
