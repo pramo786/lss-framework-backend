@@ -27,7 +27,6 @@ replay_pid*
 target/
 !.mvn/wrapper/maven-wrapper.jar
 **/logs/
-**/target/
 **/dependency-cache/
 .mvn/timing.properties
 
